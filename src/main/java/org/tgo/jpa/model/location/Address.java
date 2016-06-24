@@ -15,10 +15,10 @@ public class Address {
     @Column(name = "address_id", columnDefinition = "SMALLINT", length = 5)
     private int id;
 
-    @Column(name = "adress", length = 50, nullable = false)
+    @Column(name = "address", length = 50, nullable = false)
     private String firstAddress;
 
-    @Column(name = "adress2", length = 50)
+    @Column(name = "address2", length = 50)
     private String secondAddress;
 
     @Column(length = 20)
