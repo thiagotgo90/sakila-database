@@ -54,8 +54,8 @@ public class Film {
     @Column(columnDefinition="SMALLINT(5)")
     private int length;
     
-    @Column(name="replcacement_cost", columnDefinition="DECIMAL(5,2)")
-    private double replcacementCost;
+    @Column(name="replacement_cost", columnDefinition="DECIMAL(5,2)")
+    private double replacementCost;
     
     @Enumerated(EnumType.STRING)
     private Rating rating;
@@ -144,14 +144,6 @@ public class Film {
         this.length = length;
     }
 
-    public double getReplcacementCost() {
-        return replcacementCost;
-    }
-
-    public void setReplcacementCost(double replcacementCost) {
-        this.replcacementCost = replcacementCost;
-    }
-
     public Rating getRating() {
         return rating;
     }
@@ -174,6 +166,14 @@ public class Film {
 
     public void setCategories(List<Category> categories) {
         this.categories = categories;
+    }
+
+    public double getReplacementCost() {
+        return replacementCost;
+    }
+
+    public void setReplacementCost(double replacementCost) {
+        this.replacementCost = replacementCost;
     }
     
 }

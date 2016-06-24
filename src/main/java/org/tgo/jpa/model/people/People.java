@@ -8,6 +8,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
@@ -32,7 +33,8 @@ public class People {
     private int id;
 
     @ManyToOne
-    private Store store;
+    @JoinColumn(name="store_id")
+    private Store homeStore;
 
     @Embedded
     private Identification clientIdentification;
@@ -41,7 +43,8 @@ public class People {
     private String email;
 
     @ManyToOne
-    private Address adress;
+    @JoinColumn(name="address_id")
+    private Address address;
 
     @Convert(converter = ClientStatusConverter.class)
     private boolean active;
@@ -56,14 +59,6 @@ public class People {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Store getStore() {
-        return store;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
     }
 
     public Identification getClientIdentification() {
@@ -82,14 +77,6 @@ public class People {
         this.email = email;
     }
 
-    public Address getAdress() {
-        return adress;
-    }
-
-    public void setAdress(Address adress) {
-        this.adress = adress;
-    }
-
     public boolean isActive() {
         return active;
     }
@@ -104,6 +91,22 @@ public class People {
 
     public void setCreation(Date creation) {
         this.creation = creation;
+    }
+
+    public Store getHomeStore() {
+        return homeStore;
+    }
+
+    public void setHomeStore(Store homeStore) {
+        this.homeStore = homeStore;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
     
 }
