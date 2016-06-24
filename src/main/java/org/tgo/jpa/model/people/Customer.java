@@ -15,7 +15,7 @@ import org.tgo.jpa.model.business.Rental;
 @Entity
 @Table(name = "customer")
 @AttributeOverrides({
-        @AttributeOverride(name = "id", column = @Column(name = "customer_id")), })
+        @AttributeOverride(name = "id", column = @Column(name = "customer_id", columnDefinition="smallint(5)")), })
 public class Customer extends People {
 
     @OneToMany(mappedBy = "customer")

@@ -21,8 +21,8 @@ import org.tgo.jpa.util.people.ClientStatusConverter;
 /**
  * @author thiago
  * 
- * This inheritance strategy probability make no sense, 
- * but a did this just to make more complex queries
+ *         This inheritance strategy probability make no sense, but a did this
+ *         just to make more complex queries
  *
  */
 @MappedSuperclass
@@ -33,7 +33,7 @@ public class People {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name="store_id")
+    @JoinColumn(name = "store_id")
     private Store homeStore;
 
     @Embedded
@@ -43,15 +43,16 @@ public class People {
     private String email;
 
     @ManyToOne
-    @JoinColumn(name="address_id")
+    @JoinColumn(name = "address_id")
     private Address address;
 
     @Convert(converter = ClientStatusConverter.class)
+    @Column(columnDefinition = "BIT", length = 1)
     private boolean active;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "creation_date")
-    private Date creation;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "create_date")
+    private Date create;
 
     public int getId() {
         return id;
@@ -85,14 +86,6 @@ public class People {
         this.active = active;
     }
 
-    public Date getCreation() {
-        return creation;
-    }
-
-    public void setCreation(Date creation) {
-        this.creation = creation;
-    }
-
     public Store getHomeStore() {
         return homeStore;
     }
@@ -108,5 +101,13 @@ public class People {
     public void setAddress(Address address) {
         this.address = address;
     }
-    
+
+    public Date getCreate() {
+        return create;
+    }
+
+    public void setCreate(Date create) {
+        this.create = create;
+    }
+
 }

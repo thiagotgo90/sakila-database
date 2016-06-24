@@ -10,16 +10,16 @@ import org.tgo.jpa.model.location.Address;
 import org.tgo.jpa.model.people.Staff;
 
 @Entity
-@Table(name="store")
+@Table(name = "store")
 public class Store {
-    
+
     @Id
-    @Column(name="store_id")
+    @Column(name = "store_id", columnDefinition = "tinyint", length = 3)
     private int id;
-    
+
     @OneToOne
     private Staff manager;
-    
+
     @OneToOne
     private Address address;
 
@@ -46,7 +46,5 @@ public class Store {
     public void setManager(Staff manager) {
         this.manager = manager;
     }
-    
-    
 
 }

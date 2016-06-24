@@ -18,7 +18,7 @@ import org.tgo.jpa.model.business.Store;
 @Entity
 @Table(name = "staff")
 @AttributeOverrides({
-        @AttributeOverride(name = "id", column = @Column(name = "staff_id")), })
+        @AttributeOverride(name = "id", column = @Column(name = "staff_id", columnDefinition="smallint", length=5)), })
 public class Staff extends People {
 
     @Lob
