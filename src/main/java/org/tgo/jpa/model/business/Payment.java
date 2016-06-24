@@ -23,7 +23,7 @@ import org.tgo.jpa.model.people.Staff;
 public class Payment {
 
     @Id
-    @Column(name = "payment_id")
+    @Column(name = "payment_id", columnDefinition = "smallint", length = 5)
     private int id;
 
     @ManyToOne
@@ -38,10 +38,11 @@ public class Payment {
     @JoinColumn(name = "rental_id")
     private Rental rental;
 
+    @Column(columnDefinition="decimal(5,2)")
     private double amount;
 
     @Column(name = "payment_date")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
     public int getId() {

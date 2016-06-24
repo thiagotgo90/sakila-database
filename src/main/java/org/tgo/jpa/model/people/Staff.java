@@ -18,10 +18,11 @@ import org.tgo.jpa.model.business.Store;
 @Entity
 @Table(name = "staff")
 @AttributeOverrides({
-        @AttributeOverride(name = "id", column = @Column(name = "staff_id", columnDefinition="smallint", length=5)), })
+        @AttributeOverride(name = "id", column = @Column(name = "staff_id", columnDefinition="tinyint", length=3)), })
 public class Staff extends People {
 
     @Lob
+    @Column(columnDefinition="blob")
     private byte[] picture;
 
     private String username;

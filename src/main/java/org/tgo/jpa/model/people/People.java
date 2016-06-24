@@ -1,7 +1,5 @@
 package org.tgo.jpa.model.people;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Embedded;
@@ -11,8 +9,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.tgo.jpa.model.business.Store;
 import org.tgo.jpa.model.location.Address;
@@ -49,10 +45,6 @@ public class People {
     @Convert(converter = ClientStatusConverter.class)
     @Column(columnDefinition = "BIT", length = 1)
     private boolean active;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_date")
-    private Date create;
 
     public int getId() {
         return id;
@@ -100,14 +92,6 @@ public class People {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public Date getCreate() {
-        return create;
-    }
-
-    public void setCreate(Date create) {
-        this.create = create;
     }
 
 }

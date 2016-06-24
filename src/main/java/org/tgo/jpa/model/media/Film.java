@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.ws.rs.CookieParam;
 
 import org.tgo.jpa.model.location.Language;
 import org.tgo.jpa.model.people.Actor;
@@ -58,6 +59,7 @@ public class Film {
     private double replacementCost;
     
     @Enumerated(EnumType.STRING)
+    @Column(columnDefinition="enum")
     private Rating rating;
     
     @ManyToMany

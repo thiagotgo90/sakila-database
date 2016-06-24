@@ -3,6 +3,7 @@ package org.tgo.jpa.model.business;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,6 +22,7 @@ public class Store {
     private Staff manager;
 
     @OneToOne
+    @JoinColumn(name="address_id")
     private Address address;
 
     public int getId() {
