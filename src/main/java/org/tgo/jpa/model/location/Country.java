@@ -2,6 +2,7 @@ package org.tgo.jpa.model.location;
 
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,6 +21,32 @@ public class Country {
     private String name;
 
     @OneToMany(mappedBy = "country")
-    private List<City> citys;
+    private List<City> cities;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(List<City> cities) {
+        this.cities = cities;
+    }
+
+    
 
 }

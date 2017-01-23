@@ -15,7 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.ws.rs.CookieParam;
 
 import org.tgo.jpa.model.location.Language;
 import org.tgo.jpa.model.people.Actor;
