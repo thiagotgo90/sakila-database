@@ -10,10 +10,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Fetch;
 import javax.persistence.criteria.Join;
-import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
-import javax.xml.validation.TypeInfoProvider;
 
 import org.tgo.jpa.model.location.City;
 import org.tgo.jpa.model.location.Country;
@@ -27,10 +25,16 @@ public class CountryService {
     public List<Country> getAllCountries() {
 
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Country> cq = cb.createQuery(Country.class);
-        Root<Country> root = cq.from(Country.class);
-        cq.select(root);
-        TypedQuery<Country> typedQuery = entityManager.createQuery(cq);
+        CriteriaQuery<Country> criteriaQuery = cb.createQuery(Country.class);
+        Root<Country> root = criteriaQuery.from(Country.class);
+        root.fetch("cities");
+        
+        criteriaQuery
+            .select(root)
+            .distinct(true)
+            .orderBy(cb.desc(root.get("name")));
+        
+        TypedQuery<Country> typedQuery = entityManager.createQuery(criteriaQuery);
         List<Country> resultList = typedQuery.getResultList();
         return resultList;
     }
@@ -83,7 +87,6 @@ public class CountryService {
         typedQuery.setParameter("cityName", cityName);
         
         List<Country> resultList = typedQuery.getResultList();
-        
         
         return resultList;
         
